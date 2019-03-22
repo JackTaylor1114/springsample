@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<head th:include="fragments/header :: head">
+</head>
+
+<body>
+	<!--  <span th:text="${xstudent.name}"></span>-->
+	<div
+		th:include="fragments/body :: headline (txt='nun kannst du loslegen !!!' )"></div>
+	<div th:include="fragments/body :: nav (all=true)"></div>
+
+	<section class="container">
+		<div class="section-title h5">ich tue was ...</div>
+
+		<br>
+		<div class="container">
+			<div class="row">
+				<table class="table table-hover table-bordered "
+					th:if="${listAllStuds != null}">
+					<tbody>
+						<tr th:each="stud : ${listAllStuds}">
+							<td>
+								<div>
+									<span th:text="${stud.name}"></span>
+								</div>
+							</td>
+							<td>
+								<form th:action="@{/selectStud(ID=${stud.ID}) }" method="post">
+									<input type="submit" class="btn btn-outline-primary btn-sm"
+										value="waehle">
+								</form>
+							</td>
+							<td>
+								<form th:action="@{/deleteStud(ID=${stud.ID}) }"
+									method="post"> 
+									<!-- 							<input type="hidden" name="user" id="user" th:value="${currentUser.logname}"> -->
+									<input type="submit" class="btn btn-outline-danger btn-sm"
+										value="löschen">
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	</section>
+	<br>
+	<div th:include="fragments/footer :: footer"></div>
+
+</body>
+</html>
