@@ -27,6 +27,8 @@ public class InitializeDB {
 	
 	UserRepository userRepository;
 	
+	boolean firstStart = true;
+	
 	@Autowired
 	public InitializeDB(StudentRepository studentRepository, LVRepository LvRepository, UserRepository userRepository) {
 		this.studentRepository = studentRepository;
@@ -37,6 +39,7 @@ public class InitializeDB {
 	@PostConstruct //Ausführen nach Anlegen
 	@Transactional
 	public List<Student> init() {
+		
 		Student student = new Student("test");
 		Student student2 = new Student("test2");
 		
@@ -62,14 +65,19 @@ public class InitializeDB {
 		listAllStudents.add(student);
 		listAllStudents.add(student2);
 		
-		User user = new User();
-		user.setEmail("test@test.de");
-		user.setNickname("test");
-		user.setPasswordHash(new BCryptPasswordEncoder().encode("test"));
-		user.setRole(ROLE.USER);
+		if (firstStart == true) {
 		
-		userRepository.save(user);
+			User user = new User();
+			user.setEmail("test@test.de");
+			user.setNickname("test");
+			user.setPasswordHash(new BCryptPasswordEncoder().encode("test"));
+			user.setRole(ROLE.USER);
+			
+			userRepository.save(user);
+			
+			firstStart = false;
 		
+		}
 		
 		return listAllStudents;
 	}
