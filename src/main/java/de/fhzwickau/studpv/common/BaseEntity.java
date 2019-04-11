@@ -4,14 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class BaseEntity <PK extends Serializable>{
 	
 	@Id
 	@GeneratedValue
 	private PK id;
 	
-	private PK getId() {
+	public PK getId() {
 		return id;
 	}
 	

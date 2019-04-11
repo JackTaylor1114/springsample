@@ -4,15 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import de.fhzwickau.studpv.student.service.InitializeService;
+
+import de.fhzwickau.studpv.common.InitializeDB;
 
 @Controller
 public class StudentController {
 	
-	InitializeService initializeService;
+	InitializeDB initializeService;
 	
 	@Autowired
-	public StudentController(InitializeService initializeService) {
+	public StudentController(InitializeDB initializeService) {
 		this.initializeService = initializeService;
 	}
 	
