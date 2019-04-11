@@ -1,8 +1,5 @@
 package de.fhzwickau.studpv.security;
 
-
-import javax.management.relation.Role;
-
 import org.springframework.security.core.authority.AuthorityUtils;
 
 public class CurrentUser extends org.springframework.security.core.userdetails.User {
@@ -25,7 +22,7 @@ public class CurrentUser extends org.springframework.security.core.userdetails.U
 
  public String getNickname() {return user.getNickname();}
 
- public Role getRole() {
+ public ROLE getRole() {
 	 return user.getRole();
  }
 }

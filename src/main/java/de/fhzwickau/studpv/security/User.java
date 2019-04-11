@@ -1,6 +1,5 @@
 package de.fhzwickau.studpv.security;
 
-import javax.management.relation.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +27,7 @@ public class User {
 	private String passwordHash;
 	
 	@Column(name = "role", nullable = false)
-	private Role role;
+	private ROLE role;
 
 	public Long getId() {
 		return id;
@@ -62,11 +61,11 @@ public class User {
 		this.passwordHash = passwordHash;
 	}
 
-	public Role getRole() {
+	public ROLE getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(ROLE role) {
 		this.role = role;
 	}
 	

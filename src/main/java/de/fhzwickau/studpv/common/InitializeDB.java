@@ -6,11 +6,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.fhzwickau.studpv.lv.domain.LV;
 import de.fhzwickau.studpv.lv.domain.LVRepository;
+import de.fhzwickau.studpv.security.ROLE;
+import de.fhzwickau.studpv.security.User;
+import de.fhzwickau.studpv.security.UserRepository;
 import de.fhzwickau.studpv.student.domain.Student;
 import de.fhzwickau.studpv.student.domain.StudentRepository;
 
@@ -21,10 +25,13 @@ public class InitializeDB {
 	
 	LVRepository LvRepository;
 	
+	UserRepository userRepository;
+	
 	@Autowired
-	public InitializeDB(StudentRepository studentRepository, LVRepository LvRepository) {
+	public InitializeDB(StudentRepository studentRepository, LVRepository LvRepository, UserRepository userRepository) {
 		this.studentRepository = studentRepository;
 		this.LvRepository = LvRepository;
+		this.userRepository = userRepository;
 	}
 
 	@PostConstruct //Ausführen nach Anlegen
@@ -54,6 +61,15 @@ public class InitializeDB {
 		
 		listAllStudents.add(student);
 		listAllStudents.add(student2);
+		
+		User user = new User();
+		user.setEmail("test@test.de");
+		user.setNickname("test");
+		user.setPasswordHash(new BCryptPasswordEncoder().encode("test"));
+		user.setRole(ROLE.USER);
+		
+		userRepository.save(user);
+		
 		
 		return listAllStudents;
 	}

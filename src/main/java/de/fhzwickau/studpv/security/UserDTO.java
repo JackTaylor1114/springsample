@@ -1,12 +1,5 @@
 package de.fhzwickau.studpv.security;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.springframework.context.annotation.Role;
 
 public class UserDTO {
