@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<head th:include="fragments/header :: head">
+</head>
+
+<body>
+	<!--  <span th:text="${xstudent.name}"></span>-->
+	<div
+		th:include="fragments/body :: headline (txt='nun kannst du loslegen !!!' )"></div>
+	<div th:include="fragments/body :: nav (all=true)"></div>
+	<section class="container">
+		<br>
+		<div class="container">
+		
+			<form action="/register" th:object="${user}" method="POST" enctype="utf8">
+			   <div>
+        			<label th:text="Nickname">text</label>
+        			<input th:field="*{nickname}"/>
+        			<p th:each="error: ${#fields.errors('nickname')}" th:text="${error}">Validation error</p>
+        	   </div>
+			
+    			<div>
+        			<label th:text="Email">text</label>
+        			<input th:field="*{email}"/>
+        			<p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+        	   </div>
+
+			    <div>
+			        <label th:text="Passwort">password</label>
+			        <input type="password" th:field="*{passwordHash}"/>
+			        <p th:each="error : ${#fields.errors('passwordHash')}"
+			          th:text="${error}">Validation error</p>
+			    </div>
+			    
+    			<button type="submit" th:text="Registrieren">submit</button>
+</form>
+			
+		</div>
+	</section>
+	<br>
+	<div th:include="fragments/footer :: footer"></div>
+
+</body>
+</html>

@@ -41,6 +41,13 @@
 									value="verwaltete studenten">
 							</form>
 						</li>
+						<li class="nav-item navbar-nav p-1"
+							>
+							<form th:action="@{/register}" method="post">
+								<input type="submit" class="btn btn-outline-secondary"
+									value="REGISTRIEREN">
+							</form>
+						</li>
 						<!-- 					<ul class="navbar-nav ml-auto"> -->
 						<li class="nav-item navbar-nav p-1" th:if="${all != true}">
 							<form th:action="@{/start}" method="post">

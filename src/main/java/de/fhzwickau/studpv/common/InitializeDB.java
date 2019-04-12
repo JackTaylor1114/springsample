@@ -42,9 +42,7 @@ public class InitializeDB {
 		
 		Student student = new Student("test");
 		Student student2 = new Student("test2");
-		
-		System.out.println("ID: " + student.getId());
-		
+				
 		studentRepository.save(student);
 		studentRepository.save(student2);
 		
@@ -57,9 +55,7 @@ public class InitializeDB {
 		LvRepository.save(modellierung);
 		LvRepository.save(middleware);
 		studentRepository.save(student2);
-		
-		System.out.println("ID: " + student.getId());
-		
+				
 		List<Student> listAllStudents = new ArrayList<>();
 		
 		listAllStudents.add(student);

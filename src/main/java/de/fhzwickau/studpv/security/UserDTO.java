@@ -1,6 +1,8 @@
 package de.fhzwickau.studpv.security;
 
 import org.springframework.context.annotation.Role;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.xmlunit.diff.ByNameAndTextRecSelector;
 
 public class UserDTO {
 	
@@ -43,7 +45,7 @@ public class UserDTO {
 	}
 
 	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
+		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 	}
 
 	public Role getRole() {

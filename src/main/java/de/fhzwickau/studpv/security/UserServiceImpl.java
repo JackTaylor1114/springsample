@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<User> getUserByEmail(String email) {
-		System.out.println("Well");
 		return Optional.of(userRepository.findByEmail(email));
 	}
 
